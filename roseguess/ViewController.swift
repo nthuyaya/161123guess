@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var rose: UIImageView!  //答對的獎勵
     @IBOutlet weak var tear: UIImageView!  //答錯的淚水
     
-    var answer = 0 //答按初始值
+    var answer = 0 //答案初始值
     var chance = 6 //生命初始值
     var upperBound = 50 //最大範圍提示
     var lowerBound = 0  //最小範圍提示
@@ -59,7 +59,6 @@ class ViewController: UIViewController {
     //驗證
     func check(test:Int){
         
-        let finalanswer = answer
         
         if test > 50{
             
@@ -70,7 +69,7 @@ class ViewController: UIViewController {
             guessTime.text = String(chance)
             
             
-        }else if test > finalanswer {
+        }else if test > answer {
             upperBound = test - 1
             
             hint.text = "沒有這麼多朵\(getBoundaryText())"
@@ -79,7 +78,7 @@ class ViewController: UIViewController {
             
             guessTime.text = String(chance)
             
-        }else if test < finalanswer {
+        }else if test < answer {
             lowerBound = test + 1
             
             hint.text = "太少朵了吧!\(getBoundaryText())"
@@ -90,7 +89,7 @@ class ViewController: UIViewController {
             
         }else {
             
-            hint.text = "答對了!就是\(finalanswer)朵 送你一朵玫瑰"
+            hint.text = "答對了!就是\(answer)朵 送你一朵玫瑰"
             
             rose.isHidden = false
             
